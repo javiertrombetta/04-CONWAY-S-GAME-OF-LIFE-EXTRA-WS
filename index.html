@@ -11,8 +11,20 @@
     <link rel="stylesheet" href="game.css" />
   </head>
 
-  <body>
+  <body>    
     <section id="sidebar">
+      <div id="config">
+        <br>
+        <div>
+          <label for="inputW">Ancho: </label>
+          <input type="number" id="inputW" value="12" min="3" required/>
+        </div>        
+        <div>
+          <label for="inputH">Alto: </label>
+          <input type="number" id="inputH" value="12" min="3" required/>
+        </div>      
+      </div>
+      <button id="submitBoard" class="btn">NUEVO TABLERO</button>
       <button id="step_btn" class="btn">STEP</button>
       <button id="auto_btn" class="btn">AUTO</button>
       <button id="random_btn" class="btn">RANDOM</button>

@@ -3,8 +3,8 @@
 // Primero, veamos las dimensiones del tablero (alto y ancho)
 
 const gameOfLife = {
-  width: 12,
-  height: 12,
+  width: null,
+  height: null,
   stepInterval: null, // Guarda el ID del intervalo de tiempo con el que se actualiza el tablero
 
   createAndShowBoard: function () {
@@ -13,6 +13,12 @@ const gameOfLife = {
 
     // Ahora, este bloque construirá la tabla HTML con todas las celdas en estado "dead"
     let tablehtml = "";
+
+    //asigno input de configuración
+    this.width = document.getElementById("inputW").value;
+    this.height = document.getElementById("inputH").value;
+
+
     for (let h = 0; h < this.height; h++)
     {
       tablehtml += "<tr id='row+" + h + "'>";
@@ -26,6 +32,7 @@ const gameOfLife = {
 
     // El siguiente bloque de código agregará la tabla a #board del DOM. Busca un elemento de id "board" y lo agrega al tablero
     const board = document.getElementById("board");
+    board.innerHTML = "";
     board.appendChild(goltable);
     // Una vez que añade los elementos HTML a la página, agregale los eventos a cada celda
     this.setupBoardEvents();
@@ -198,7 +205,18 @@ const gameOfLife = {
 gameOfLife.createAndShowBoard();
 
 // escucho los eventos de click
-document.getElementById("clear_btn").addEventListener("click", () => {gameOfLife.clear()});
-document.getElementById("auto_btn").addEventListener("click",  ("click", () => {gameOfLife.enableAutoPlay()}));
-document.getElementById("random_btn").addEventListener("click", () => {gameOfLife.random()});
-document.getElementById("step_btn").addEventListener("click", () => {gameOfLife.step()});
+document.getElementById("submitBoard").addEventListener("click", () => {  
+  gameOfLife.createAndShowBoard();
+});
+document.getElementById("clear_btn").addEventListener("click", () => {
+  gameOfLife.clear();
+});
+document.getElementById("auto_btn").addEventListener("click", () => {
+  gameOfLife.enableAutoPlay();
+});
+document.getElementById("random_btn").addEventListener("click", () => {
+  gameOfLife.random();
+});
+document.getElementById("step_btn").addEventListener("click", () => {
+  gameOfLife.step();
+});
